@@ -1,8 +1,7 @@
 package ru.bgpu.task.map;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,6 +9,7 @@ public class Main {
             FileInputStream fstream = new FileInputStream("C:\\Users\\79991\\Desktop\\access.log");
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
             HashMap<String, Integer> map = new HashMap<String, Integer>();
+            Map<String, Integer> res = new LinkedHashMap<String, Integer>();
             String strLine;
             br.readLine();
             while ((strLine = br.readLine()) != null){
@@ -22,12 +22,15 @@ public class Main {
                 }
                 map.put(key, value);
             }
-            for (String key : map.keySet()){
-                System.out.println(key + " " + map.get(key));
+            map.entrySet().stream().sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+                    .forEach(e -> res.put(e.getKey(), e.getValue()));
+            for (String key : res.keySet()){
+                System.out.println(key + " " + res.get(key));
             }
             fstream.close();
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
         }
+
     }
 }
