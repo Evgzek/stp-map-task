@@ -10,6 +10,7 @@ public class Main {
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
             HashMap<String, Integer> map = new HashMap<String, Integer>();
             Map<String, Integer> res = new LinkedHashMap<String, Integer>();
+            Map<String, Integer> top_10 = new LinkedHashMap<String, Integer>();
             String strLine;
             br.readLine();
             while ((strLine = br.readLine()) != null){
@@ -26,6 +27,19 @@ public class Main {
                     .forEach(e -> res.put(e.getKey(), e.getValue()));
             for (String key : res.keySet()){
                 System.out.println(key + " " + res.get(key));
+            }
+            System.out.println("Top 10");
+            int n = 0;
+            for (String key : res.keySet()){
+                n++;
+                if (n > 10){
+                    break;
+                }else {
+                    top_10.put(key, res.get(key));
+                }
+            }
+            for (String key : top_10.keySet()){
+                System.out.println(key + " " + top_10.get(key));
             }
             fstream.close();
         } catch (Exception e) {
