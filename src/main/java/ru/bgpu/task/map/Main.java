@@ -15,7 +15,6 @@ public class Main {
             Map<String, Integer> res = new LinkedHashMap<String, Integer>();
             Map<String, Integer> top_10 = new LinkedHashMap<String, Integer>();
             String strLine;
-            br.readLine();
             while ((strLine = br.readLine()) != null){
                 String[] parts = strLine.split("\\s+");
                 String key = parts[2];
