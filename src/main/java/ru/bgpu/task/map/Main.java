@@ -1,9 +1,6 @@
 package ru.bgpu.task.map;
 
-import com.google.gson.Gson;
-
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class Main {
